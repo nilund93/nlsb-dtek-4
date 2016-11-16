@@ -1,27 +1,22 @@
 .text
 
-factorial:
-	#use only add, addi, beq
-	#use only register 0 to 7
-	#input should be given in a0
-	#final result should be in v0
+	add $a1,$0,$0
+	add $a2,$0,$0
+	add $a3,$0,$0
+	addi $v0,$0,1
+	addi $v1,$0,5
+loop1:
+	beq  $a2,$v1,done
+	add $a1,$a2,$0
+	add $a3,$v0,$0
+loop2:	beq $a1,$0,outloop
+	add $v0,$v0,$a3
+	addi $a1,$a1,-1
+	beq $0,$0,loop2
+outloop:
+	addi $a2,$a2,1
+	beq $0,$0,loop1
+done:
+	beq $0,$0,done
 	
-	#multiplikation är att addera ett tal x antal gånger
-	#additionsloop
-	
-	#fakultet är 
-	
-outer:
-	
-inner:
-	add summa, summa, nånting
-	
-	addi nånting, nånting, -1
-	bnez nånting, outer	#lös så vi använder beq istället
-	addi nåntingmer, nåntingmer, -1
-	bnez nåntingmer, inner
-	
-stop:
-	j stop
-	nop
-	
+		
